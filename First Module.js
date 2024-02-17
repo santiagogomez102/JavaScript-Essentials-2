@@ -1,29 +1,21 @@
 "use strict"
 
-console.log(typeof 2.5);
-console.log(typeof "one two three");
-console.log(typeof false);
+let contact = {};
+contact.tel = "207-662-5412";
+console.log(contact);
+console.log(contact.tel);
 
-let nr = 2.5;
-nr = nr / 2;
-console.log(typeof nr);
-
-console.log(typeof nr1); // Undeclared variable
-
-let a = [10, 20, "en to tre", true, 50];
-a[4] = a[4] * 2;
-console.log(a[0]);
-console.log(a[2]);
-console.log(a[4]);
-
-let sampleObject = {
-    id: 10,
-    delay: 20,
-    name: "en to tre",
-    isPresent: true,
-    delay: 50
+let contact1 = {
+    tel: "207-662-5412",
+    email: "RonaldSMurphy@freepost.org"
 };
-sampleObject.delay = sampleObject.delay * 2;
-console.log(sampleObject.id);
-console.log(sampleObject.name);
-console.log(sampleObject.delay);
+console.log(contact1);
+console.log(contact1.tel);
+
+let contact2 = {
+    "first name": "Ronald"
+}
+console.log(contact2);
+
+console.log(typeof console);
+console.log(typeof console.log);
