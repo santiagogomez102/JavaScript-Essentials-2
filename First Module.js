@@ -1,21 +1,14 @@
 "use strict"
 
-let contact = {};
-contact.tel = "207-662-5412";
-console.log(contact);
-console.log(contact.tel);
-
-let contact1 = {
-    tel: "207-662-5412",
-    email: "RonaldSMurphy@freepost.org"
+let test = {
+    nr: 10,
+    b: false,
+    str: "uno dos tres",
+    arr: [10, 20, 30],
+    obj: { x: 10, y: 20},
+    fn: function(arg) {console.log(arg)}
 };
-console.log(contact1);
-console.log(contact1.tel);
+test.fn(123);
 
-let contact2 = {
-    "first name": "Ronald"
-}
-console.log(contact2);
-
-console.log(typeof console);
-console.log(typeof console.log);
+console.log(test.obj.x);
+test.obj.y = 40;
