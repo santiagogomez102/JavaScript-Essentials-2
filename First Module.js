@@ -35,7 +35,39 @@ let contact2 = {
     email_1: "RonaldSMurphy@freepost.org",
     email_2: "rsmurphy@briazz.com"
 }
-for(let i = 1; i <= 2; i++) {
+for (let i = 1; i <= 2; i++) {
     let key = "email_" + i;
     console.log(`${key}: ${contact2[key]}`);
 }
+
+// Check if contact.notes exist
+
+if (!contact.notes) {
+    contact.notes = "something really important";
+}
+console.log(contact.notes)
+
+if (contact && contact.email){
+    console.log(contact.email.private);
+}
+
+contact && contact.email && console.log(contact.email.private);
+
+if ("notes" in contact) {
+    console.log(contact.notes);
+}
+
+for (let x in contact) {
+    console.log(x);
+}
+
+for (let x in contact) {
+    console.log(contact[x]);
+}
+
+for (let x in contact) {
+    console.log(`${x}: ${contact[x]}`);
+}
+
+let keys = Object.keys(contact);
+console.log(keys);
