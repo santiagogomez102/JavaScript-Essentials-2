@@ -1,13 +1,13 @@
 "use strict"
 
-const x = 10;
-// x = 20 can't be done as x is "const", not "let"
+var point1 = {x: 10, y: 20};
+var point2 = {x: 10, y: 20};
+console.log(point1 === point2);
 
-const contact = {};
-// contact = { email: "RonaldSMurphy@freepost.org"}; can't be done as contact is "const", not let
-contact.email = "RonaldSMurphy@freepost.org";
-console.log(contact.email);
-contact.email = "rsmurphy@briazz.com";
-console.log(contact.email);
-delete contact.email;
-console.log(contact.email);
+let point3 = point1;
+console.log(point1 === point3);
+
+point3.z = 40;
+console.log(point3.z);
+console.log(point1.z);
+console.log(point2.z);
