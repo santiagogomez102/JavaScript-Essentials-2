@@ -5,15 +5,16 @@ let circle = {
     center: {
         x: 0,
         y: 0,
-    },
-    getType () {       // same as "getType: function() {"
-        return (typeof this.radius === "number") ? "circle" : "unknown";
+        show(){console.log(`${this.x}, ${this.y}`)}
     }
-};
-console.log(circle.getType());
-console.log(circle["getType"]() );
+}
+circle.center.show();
 
-let figure = {...circle};
-delete circle.radius;
-console.log(figure.radius);
-console.log(figure.getType());
+let test = {
+    point: circle.center
+}
+test.point.show();
+
+circle.center.x = 10;
+circle.center.show();
+test.point.show();
