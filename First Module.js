@@ -1,49 +1,87 @@
 "use strict"
 
-let contact = {
-    _age: 36,
-    firstName: "David",
-    lastName: "Taylor",
-    get fullName() {return `${this.firstName} ${this.lastName}`;},
-    get age() {return this._age;},
-    set age(a) {if( a > 0) this._age = a;}
+let createPoint = function(x,y) {
+    let obj = {};
+    obj.x = x;
+    obj.y = y;
+    return obj;
 };
-let keys = Object.keys(contact);
-console.log(keys);
+let point1 = createPoint(1,1);
+let point2 = createPoint(2,2);
+console.log(point1.x);
+console.log(point2.x);
 
-let desc = Object.getOwnPropertyDescriptor(contact, "firstName");
-console.log(desc);
+let createPoint1 = function(x,y) {
+    return {
+        x:x,
+        y:y
+    }
+};
+let point11 = createPoint1(1,1);
+let point21 = createPoint1(2,2);
+console.log(point11.x);
+console.log(point21.x);
 
-let contact1 = {};
-Object.defineProperty(contact1, "_age", {
-    value: 36,
-    writable: true,
-    enumerable: false,
-    configurable: true
-});
-let keys1 = Object.keys(contact1);
-console.log(keys1);
-contact1._age = 100;
-console.log(contact1._age);
+let createPoint2 = function(x,y) {
+    return {
+        x,
+        y
+    }
+};
+let point12 = createPoint2(1,1);
+let point22 = createPoint2(2,2);
+console.log(point12.x);
+console.log(point22.x);
 
-Object.defineProperty(contact1, "_age", {
-    value: contact1._age,
-    writable: false,
-    enumerable: false,
-    configurable: true
-});
-console.log(contact1._age);
-// contact1._age = 200;   --> Error as property is not writable
-console.log(contact1._age);
+let createPoint3 = (x, y) => ({x, y});
+let point13 = createPoint3(1,1);
+let point23 = createPoint3(2,2);
+console.log(point13.x);
+console.log(point23.x);
 
-let enumKeys = Object.keys(contact1);
-let allKeys = Object.getOwnPropertyNames(contact1);
-console.log(enumKeys);
-console.log(allKeys);
+let createColoredPoint = function(x, y, color) {
+    let _info = "... object under construction";
+    let _color = color;
+    console.log(_info);
+    return {
+        x,
+        y,
+        getColor() {return _color}
+    }
+};
+let coloredPoint1 = createColoredPoint (1, 1, "red");
+let coloredPoint2 = createColoredPoint (2, 2, "green");
+console.log(coloredPoint1.getColor());
+console.log(coloredPoint2.getColor());
+console.log(coloredPoint1._color);      //Returns "undefined" as it is a local variable
 
-Object.preventExtensions(contact1);     //Can't add new properties
-Object.seal(contact1);                  //Can't add, remove or reconfigure properties
-Object.freeze(contact1);                //Similar to seal, additionally can't change values of properties
-Object.isExtensible(contact1);
-Object.isSealed(contact1);
-Object.isFrozen(contact1);
+let ColoredPoint = function(x, y, color) {
+    let _info = "... object under construction";
+    let _color = color;
+    console.log(_info);
+    
+    this.x = x;
+    this.y = y;
+    this.getColor = function() {return _color};
+};
+let coloredPoint11 = new ColoredPoint (1, 1, "red");
+let coloredPoint21 = new ColoredPoint (2, 2, "green");
+console.log(coloredPoint11.getColor());
+console.log(coloredPoint21.getColor());
+console.log(coloredPoint1._color);      //Returns "undefined" as it is a local variable
+
+console.log(coloredPoint11.constructor.name);
+console.log(typeof coloredPoint11.constructor);
+
+let a = {};
+console.log(a.constructor.name);
+console.log(typeof a.constructor);
+
+let emptyObject = new Object();
+console.log(emptyObject.constructor.name);
+
+let anotherEmptyObject = {};
+console.log(anotherEmptyObject.constructor.name);
+
+let reallyEmptyObject = Object.create(null);
+console.log(typeof reallyEmptyObject.constructor);
